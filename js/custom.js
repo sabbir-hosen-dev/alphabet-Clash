@@ -2,11 +2,21 @@ const homePage = document.getElementById("home-page");
 const keybordPage = document.getElementById("keybord-page");
 const resultPage = document.getElementById("result-page");
 
+
+let count = 0;
+let life = 5;
+
+
 const playBtn = () => {
   homePage.classList.add("hidden");
   keybordPage.classList.remove("hidden");
   resultPage.classList.add("hidden");
   randomLatterGet()
+  count = 0;
+  life = 5;
+
+  document.getElementById("score").innerText = count;
+  document.getElementById("life").innerText = life;
 };
 
 document.getElementById("play-btn").addEventListener("click", playBtn);
@@ -21,6 +31,7 @@ const randomLatterGet = () => {
     randomLetter.toUpperCase();
 };
 
+;
 
 const checkLetter = (keyLetter) => {
   const displayLetter =  document.getElementById("display");
@@ -28,24 +39,62 @@ const checkLetter = (keyLetter) => {
 
   if(keyLetter === dLetter){
     randomLatterGet()
-    
+    count++ ;
+    document.getElementById("score").innerText = count;
+    console.log("uqual" + count , life)
   }
+
+  else{
+    life--
+    if(count <= life){
+      document.getElementById("life").innerText = life;
+      console.log("minas" + count , life)
+    }else{
+      homePage.classList.add("hidden");
+      keybordPage.classList.add("hidden");
+      resultPage.classList.remove("hidden");
+
+      document.getElementById("ful-score").innerText = count
+    }
+  }
+
 };
+
+
 
 const keybordBtns = document.getElementsByClassName("k-btn");
 
 for (let i = 0; i < keybordBtns.length; i++) {
   keybordBtns[i].addEventListener("click", () => {
     const latter = keybordBtns[i].innerText;
+    keybordBtns[i].classList.add("active");
+    setInterval(() => keybordBtns[i].classList.remove("active") , 300)
+    checkLetter(latter)
   });
 }
+
+document.addEventListener("keydown", (e) => {
+  for(let i = 0; i < keybordBtns.length; i++){
+    if(keybordBtns[i].innerText === e.key){
+      keybordBtns[i].classList.add("active");
+    }
+  }
+})
+
 
 document.addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
     playBtn();
+     count = 0;
+     life = 5;
+     console.log("press" + count , life)
   }
-  else(
-    checkLetter(e.key)
-    
-  )
+  else{
+      for(let i = 0; i < keybordBtns.length; i++){
+        if(keybordBtns[i].innerText === e.key){
+          keybordBtns[i].classList.remove("active");
+        }
+      }
+      checkLetter(e.key);
+    }
 });
