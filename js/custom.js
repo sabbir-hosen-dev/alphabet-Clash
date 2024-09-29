@@ -12,12 +12,16 @@ const playBtn = () => {
   keybordPage.classList.remove("hidden");
   resultPage.classList.add("hidden");
   randomLatterGet()
+
+};
+
+const gameOver = () => {
   count = 0;
   life = 5;
 
   document.getElementById("score").innerText = count;
   document.getElementById("life").innerText = life;
-};
+}
 
 document.getElementById("play-btn").addEventListener("click", playBtn);
 
@@ -31,7 +35,6 @@ const randomLatterGet = () => {
     randomLetter.toUpperCase();
 };
 
-;
 
 const checkLetter = (keyLetter) => {
   const displayLetter =  document.getElementById("display");
@@ -41,14 +44,11 @@ const checkLetter = (keyLetter) => {
     randomLatterGet()
     count++ ;
     document.getElementById("score").innerText = count;
-    console.log("uqual" + count , life)
   }
-
   else{
-    life--
-    if(count <= life){
+    life--;
+    if( life > 0 ){
       document.getElementById("life").innerText = life;
-      console.log("minas" + count , life)
     }else{
       homePage.classList.add("hidden");
       keybordPage.classList.add("hidden");
@@ -73,6 +73,8 @@ for (let i = 0; i < keybordBtns.length; i++) {
   });
 }
 
+
+
 document.addEventListener("keydown", (e) => {
   for(let i = 0; i < keybordBtns.length; i++){
     if(keybordBtns[i].innerText === e.key){
@@ -82,12 +84,12 @@ document.addEventListener("keydown", (e) => {
 })
 
 
+
+
 document.addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
     playBtn();
-     count = 0;
-     life = 5;
-     console.log("press" + count , life)
+    gameOver();
   }
   else{
       for(let i = 0; i < keybordBtns.length; i++){
@@ -95,6 +97,11 @@ document.addEventListener("keyup", (e) => {
           keybordBtns[i].classList.remove("active");
         }
       }
-      checkLetter(e.key);
+      checkLetter(e.key.toLocaleLowerCase());
     }
 });
+
+document.getElementById("r-play").addEventListener("click", () => {
+  playBtn();
+  gameOver();
+})
