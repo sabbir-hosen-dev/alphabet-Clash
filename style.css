@@ -22,3 +22,9 @@ h1 {
 .k-btn:hover{
   background: orange;
 }
+
+.result-box{
+  background: url("images/Annotation\ 2024-09-29\ 120901.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -18,10 +18,15 @@
       <button class="btn rounded-md px-5 py-2 font-bold hover:bg-gray-400 transition-all duration-150  bg-white text-[#010313]">Play</button>
     </div>
 
-    <div id="keybord">
+    <div id="keybord" class="w-full hidden">
+
+      <div class="screeen relative flex justify-center items-center w-full h-[250px] border-[8px] mb-14 border-[#010313cc] rounded-md">
+        <span class="bg-[#010313cc] text-white py-0 px-4 rounded-b-md absolute top-0 ">Don't watch keyboard  while playing...</span>
+        <h2 id="display" class="text-white text-7xl font-medium ">Y</h2>
+      </div>
+
       <div class="grid gap-1">
-        
-        <div class="row">
+        <div class="row flex justify-center gap-1">
           <button class="k-btn">q</button>
           <button class="k-btn">w</button>
           <button class="k-btn">e</button>
@@ -34,7 +39,7 @@
           <button class="k-btn">p</button>
         </div>
 
-        <div class="row">
+        <div class="row flex justify-center gap-1">
           <button class="k-btn">a</button>
           <button class="k-btn">s</button>
           <button class="k-btn">d</button>
@@ -46,7 +51,7 @@
           <button class="k-btn">l</button>
         </div>
 
-        <div class="row">
+        <div class="row flex justify-center gap-1">
           <button class="k-btn">z</button>
           <button class="k-btn">x</button>
           <button class="k-btn">c</button>
@@ -57,6 +62,20 @@
           <button class="k-btn">/</button>
         </div>
       </div>
+
+      <div  class="flex justify-between mt-10 px-2 md:px-14">
+        <button class="bg-[#db8adb] font-semibold text-white py-1 px-5 rounded-2xl">Life: <span id="life">5</span></button>
+        <button class="bg-[#db8adb]  font-semibold text-white py-1 px-5 rounded-2xl">Score: <span id="score">0</span></button>
+      </div>
+    </div>
+
+
+    <div class="result-box rounded-lg p-7 text-white text-center flex flex-col gap-4">
+      <span class="font-bold text-lg">Score: <span class="text-2xl ml-1">12</span></span>
+      <div class="">
+        <button class="btn rounded-md px-5 py-2 font-bold hover:bg-gray-400 transition-all duration-150  bg-white text-[#010313]">Play Now</button>
+      </div>
+      <p>Practice will make you Pro</p>
     </div>
 
   </div>
