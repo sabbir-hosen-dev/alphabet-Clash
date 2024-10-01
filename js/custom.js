@@ -73,7 +73,7 @@ for (let i = 0; i < keybordBtns.length; i++) {
   });
 }
 
-
+// key press 
 
 document.addEventListener("keydown", (e) => {
   for(let i = 0; i < keybordBtns.length; i++){
